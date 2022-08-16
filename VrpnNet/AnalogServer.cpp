@@ -172,7 +172,10 @@ AnalogServer::AnalogChannelCollection ^AnalogServer::AnalogChannels::get()
 	CHECK_DISPOSAL_STATUS();
 	return m_channels;
 }
+
+/*
 cli::array<AnalogServerChannel ^> ^AnalogServer::Channels::get()
 {
 	return m_channels;
 }
+*/
