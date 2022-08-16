@@ -9,7 +9,6 @@ using namespace System::Runtime::InteropServices;
 using namespace System::Windows::Media;
 using namespace System::Windows::Media::Imaging;
 using namespace Vrpn;
-using namespace std;
 
 /// <summary>
 /// Creates a new instance of the VRPN imager server.
@@ -258,15 +257,15 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 		{
 			if (depth == ImageBitDepth::unsigned8bit)
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset, columnStride, rowStride);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset, columnStride, rowStride);
 			}
 			else if (depth == ImageBitDepth::float32bit)
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (float*)(pin1 + buffOffset), columnStride / 4, rowStride / 4);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (float*)(pin1 + buffOffset), columnStride / 4, rowStride / 4);
 			}
 			else
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (unsigned short*)(pin1 + buffOffset), columnStride / 2, rowStride / 2);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (unsigned short*)(pin1 + buffOffset), columnStride / 2, rowStride / 2);
 			}
 			m_server->mainloop();
 			y += rowsPerRegion;
@@ -278,15 +277,15 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 		{
 			if (depth == ImageBitDepth::unsigned8bit)
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset, columnStride, rowStride, height.Value, invertRows.Value);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset, columnStride, rowStride, height.Value, invertRows.Value);
 			}
 			else if (depth == ImageBitDepth::float32bit)
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (float*)(pin1 + buffOffset), columnStride / 4, rowStride / 4, height.Value, invertRows.Value);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (float*)(pin1 + buffOffset), columnStride / 4, rowStride / 4, height.Value, invertRows.Value);
 			}
 			else
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (unsigned short*)(pin1 + buffOffset), columnStride / 2, rowStride / 2, height.Value, invertRows.Value);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (unsigned short*)(pin1 + buffOffset), columnStride / 2, rowStride / 2, height.Value, invertRows.Value);
 			}
 			m_server->mainloop();
 			y += rowsPerRegion;
@@ -298,15 +297,15 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 		{
 			if (depth == ImageBitDepth::unsigned8bit)
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset, columnStride, rowStride, height.Value, invertRows.Value, depthStride.Value, depthStart.Value, depthStop.Value);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset, columnStride, rowStride, height.Value, invertRows.Value, depthStride.Value, depthStart.Value, depthStop.Value);
 			}
 			else if (depth == ImageBitDepth::unsigned8bit)
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (float*)(pin1 + buffOffset), columnStride / 4, rowStride / 4, height.Value, invertRows.Value, depthStride.Value / 4, depthStart.Value, depthStop.Value);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (float*)(pin1 + buffOffset), columnStride / 4, rowStride / 4, height.Value, invertRows.Value, depthStride.Value / 4, depthStart.Value, depthStop.Value);
 			}
 			else
 			{
-				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (unsigned short*)(pin1 + buffOffset), columnStride / 2, rowStride / 2, height.Value, invertRows.Value, depthStride.Value / 2, depthStart.Value, depthStop.Value);
+				success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), (unsigned short*)(pin1 + buffOffset), columnStride / 2, rowStride / 2, height.Value, invertRows.Value, depthStride.Value / 2, depthStart.Value, depthStop.Value);
 			}
 			m_server->mainloop();
 			y += rowsPerRegion;
@@ -438,7 +437,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -447,7 +446,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -456,7 +455,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop ), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value, depthStride.Value / 2, depthStart.Value, depthStop.Value);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop ), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value, depthStride.Value / 2, depthStart.Value, depthStop.Value);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -589,7 +588,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -598,7 +597,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -607,7 +606,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value, depthStride.Value / 2, depthStart.Value, depthStop.Value);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 2, columnStride / 2, rowStride / 2, height.Value, invertRows.Value, depthStride.Value / 2, depthStart.Value, depthStop.Value);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -739,7 +738,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 4, columnStride / 4, rowStride / 4);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 4, columnStride / 4, rowStride / 4);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -748,7 +747,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 4, columnStride / 4, rowStride / 4, height.Value, invertRows.Value);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 4, columnStride / 4, rowStride / 4, height.Value, invertRows.Value);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
@@ -757,7 +756,7 @@ bool ImagerServer::SendImage(USHORT channelIndex, USHORT columnStart, USHORT col
 	{
 		while (success && y < (rowStop + 1))
 		{		
-			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 4, columnStride / 4, rowStride / 4, height.Value, invertRows.Value, depthStride.Value / 4, depthStart.Value, depthStop.Value);
+			success = m_server->send_region_using_base_pointer(channelIndex, columnStart, columnStop, y, (UInt16)std::min((int)(rowStop), (int)(y + rowsPerRegion - 1)), pin1 + buffOffset / 4, columnStride / 4, rowStride / 4, height.Value, invertRows.Value, depthStride.Value / 4, depthStart.Value, depthStop.Value);
 			m_server->mainloop();
 			y += rowsPerRegion;
 		}
