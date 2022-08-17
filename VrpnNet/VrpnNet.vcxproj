@@ -97,23 +97,23 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>
     </IncludePath>
-    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\vrpn\$(Configuration)\;$(SolutionDir)..\vrpn\$(Platform)\quatlib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <SourcePath>$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>
     </IncludePath>
-    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\vrpn\$(Configuration)\;$(SolutionDir)..\vrpn\$(Platform)\quatlib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>
     </IncludePath>
-    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\vrpn\$(Configuration)\;$(SolutionDir)..\vrpn\$(Platform)\quatlib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>
     </IncludePath>
-    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)..\vrpn\$(Platform)\vrpn\$(Configuration)\;$(SolutionDir)..\vrpn\$(Platform)\quatlib\$(Configuration)\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
